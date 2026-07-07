@@ -18,9 +18,17 @@ function openInvitation() {
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
 // Supabase client (browser / public key)
+// Supabase client (optional)
 const supabaseUrl = '';
 const supabaseKey = '';
-const supabase = createClient(supabaseUrl, supabaseKey);
+
+let supabase = null;
+
+if (supabaseUrl && supabaseKey) {
+    supabase = createClient(supabaseUrl, supabaseKey);
+} else {
+    console.warn("Supabase is not initialized. RSVP saving is disabled.");
+}
 
 // Music Player Toggle
 const audio = document.getElementById('bg-music');

@@ -129,7 +129,7 @@
             
             <form class="rsvp-form" onsubmit="submitRSVP(event)">
                 <label>Name</label>
-                <input type="text" placeholder="Your full name" required>
+                <input type="text" id="name" placeholder="Your full name" required>
 
                 <label>Attendance</label>
                 <div class="radio-group">
@@ -150,7 +150,7 @@
                 </div>
 
                 <label>Wishes & Blessings</label>
-                <textarea rows="4" placeholder="Your wishes and blessings..."></textarea>
+                <textarea id="wishes" rows="4" placeholder="Your wishes and blessings..."></textarea>
 
                 <button type="submit" class="submit-btn">Submit RSVP</button>
             </form>
@@ -173,6 +173,6 @@
 
     </div>
     
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
