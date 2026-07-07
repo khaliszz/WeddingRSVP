@@ -1,0 +1,242 @@
+/* CSS Variables for New Blue & Cream Theme */
+:root {
+    --primary-blue: #8ba9c6; /* Dusty blue for the main background */
+    --accent-blue: #1c3b63; /* Dark navy/indigo for text, borders, and accents */
+    --parchment: #f6f4ec; /* Cream/off-white color for the cards */
+    --text-dark: #1c3b63; /* Changed to dark navy to match the theme */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: var(--primary-blue);
+    color: var(--text-dark);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.script-font {
+    font-family: 'Great Vibes', cursive;
+}
+
+/* --- Cover Section --- */
+#cover-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('assets/blue-texture-bg.jpg') center/cover;
+    background-color: var(--primary-blue); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    color: var(--accent-blue);
+}
+
+#cover-screen h1 {
+    color: var(--accent-blue);
+    font-size: 3.5rem;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+#cover-screen .date {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.envelope-button {
+    background-color: var(--parchment); 
+    border: 2px solid var(--accent-blue); 
+    color: var(--accent-blue);
+    padding: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+    width: 85%;
+    max-width: 400px;
+}
+
+.envelope-button:hover {
+    transform: scale(1.05);
+}
+
+/* --- Main Content Container --- */
+#main-content {
+    display: none; 
+    background: url('assets/blue-texture-bg.jpg') center top/cover repeat-y;
+    background-color: var(--primary-blue);
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    padding: 50px 20px;
+    background-color: transparent; 
+    color: var(--parchment);
+}
+
+.monogram {
+    font-size: 5rem;
+    color: var(--accent-blue);
+    margin: 20px 0;
+}
+
+.music-player {
+    margin-top: 30px;
+}
+
+.play-btn {
+    background-color: var(--accent-blue);
+    color: var(--parchment);
+    border: 2px solid var(--accent-blue);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Formal Invitation Card --- */
+.invitation-card {
+    background-color: var(--parchment);
+    color: var(--text-dark);
+    margin: 40px auto;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px 20px;
+    border: 4px solid var(--accent-blue); 
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.invitation-card h2 {
+    font-size: 2.5rem;
+    margin: 15px 0;
+    color: var(--accent-blue);
+}
+
+.details-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    border-top: 1px solid var(--accent-blue);
+    padding-top: 20px;
+}
+
+/* --- Attire, Itinerary, Contact, RSVP Cards --- */
+.section-card {
+    background-color: rgba(246, 244, 236, 0.95); 
+    color: var(--text-dark);
+    margin: 40px auto;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.section-card h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+/* Itinerary Timeline */
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    color: var(--parchment);
+}
+
+.timeline-item .time {
+    font-weight: bold;
+    color: var(--accent-blue);
+    width: 100px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+/* Buttons (Map, Waze, Contact) */
+.action-btn {
+    display: block;
+    width: 80%;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: var(--parchment);
+    color: var(--accent-blue);
+    text-decoration: none;
+    border: 2px solid var(--accent-blue);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background-color: var(--accent-blue);
+    color: var(--parchment);
+}
+
+/* RSVP Form */
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+    color: var(--text-dark);
+}
+
+.rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--accent-blue);
+    border-radius: 5px;
+    font-family: inherit;
+    background-color: #fff;
+    color: var(--text-dark);
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px;
+}
+
+.radio-group label {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--accent-blue);
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    color: var(--text-dark);
+}
+
+.submit-btn {
+    background-color: var(--accent-blue);
+    color: var(--parchment);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
