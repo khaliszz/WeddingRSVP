@@ -15,6 +15,13 @@ function openInvitation() {
     }, 1000);
 }
 
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+// Supabase client (browser / public key)
+const supabaseUrl = '';
+const supabaseKey = '';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 // Music Player Toggle
 const audio = document.getElementById('bg-music');
 let isPlaying = false;
@@ -48,10 +55,53 @@ setInterval(() => {
 }, 1000);
 
 // Form submission prevention for template
-function submitRSVP(event) {
+async function submitRSVP(event) {
     event.preventDefault();
-    alert("Thank you for your RSVP! (Note: Connect this form to a backend service to actually save data).");
+    const form = event.target;
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+
+    const name = document.getElementById('name').value.trim();
+    const attendance = document.querySelector('input[name="attendance"]:checked')?.value || null;
+    const guestCount = parseInt(document.getElementById('guest-count').value, 10) || 1;
+    const plusOneName = document.getElementById('plus-one-name').value.trim() || null;
+    const wishes = document.getElementById('wishes').value.trim() || null;
+
+    try {
+        const { data, error } = await supabase
+            .from('rsvp')
+            .insert([
+                {
+                    name: name,
+                    attendance: attendance,
+                    guest_count: guestCount,
+                    plus_one_name: plusOneName,
+                    wishes: wishes
+                }
+            ]);
+
+        if (error) {
+            console.error('Supabase insert error:', error);
+            alert('Unable to save RSVP. Please try again later.');
+            return;
+        }
+
+        alert('Thank you — your RSVP has been saved.');
+        form.reset();
+        plusOneSection.style.display = 'none';
+    } catch (e) {
+        console.error(e);
+        alert('Unexpected error. See console for details.');
+    } finally {
+        submitBtn.disabled = false;
+    }
 }
+
+// Expose function for inline `onsubmit` handler in the HTML
+window.submitRSVP = submitRSVP;
+// Expose other handlers used by inline HTML `onclick`
+window.openInvitation = openInvitation;
+window.toggleMusic = toggleMusic;
 
 // Dropdown Plus One Logic
 const guestSelect = document.getElementById('guest-count');
