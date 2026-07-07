@@ -1,2 +1,179 @@
-testing pfodsjspdjp
-saya comel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shimeon & Ammy Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="your-romantic-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="cover-screen">
+        <h1 class="script-font">Save The Date</h1>
+        <div class="date">26 . 09 . 2026</div>
+        <div class="envelope-button" onclick="openInvitation()">
+            <p style="font-weight: bold;">A Love Letter From</p>
+            <h2 class="script-font" style="color: var(--accent-blue); font-size: 3rem; margin: 15px 0;">Shimeon & Ammy</h2>
+            <p>Click To Open The Invitation</p>
+        </div>
+        <p style="margin-top: 30px; font-size: 1.5rem;" class="script-font">#Shimeon&Ammy</p>
+    </div>
+
+    <div id="main-content">
+        
+        <section class="hero-section">
+            <p style="color: var(--accent-blue); font-weight: bold;">Shimeon & Ammy</p>
+            <p style="color: var(--accent-blue);">26.09.2026</p>
+            <div class="monogram script-font">S & A</div>
+            <img src="https://via.placeholder.com/300x300" alt="Couple" style="border-radius: 10px; width: 80%; max-width: 400px; margin: 20px 0; border: 4px solid var(--parchment);">
+            
+            <div class="music-player">
+                <p style="font-size: 0.9rem; margin-bottom: 10px; color: var(--accent-blue); font-weight: bold;">TAP TO PLAY THE SONG</p>
+                <button class="play-btn" onclick="toggleMusic()">▶</button>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--accent-blue);">Scroll for Ceremony Detail ⬇</p>
+        </section>
+
+        <section class="invitation-card">
+            <p style="font-size: 0.8rem; letter-spacing: 2px;">WITH JOY AND GRACE, WE</p>
+            <br>
+            <p style="font-size: 0.9rem;">request the pleasure of your company<br>Mr. | Mrs. | Ms.<br>to our wedding</p>
+            <br>
+            <h2 class="script-font">Shimeon</h2>
+            <p>&</p>
+            <h2 class="script-font">Bulan Ammy Wee Lee Yen</h2>
+
+            <div class="details-grid">
+                <div>
+                    <p class="script-font" style="font-size: 1.5rem; color: var(--accent-blue);">Date</p>
+                    <p><strong>26</strong> SATURDAY<br>09.2026</p>
+                </div>
+                <div>
+                    <p class="script-font" style="font-size: 1.5rem; color: var(--accent-blue);">Venue</p>
+                    <p>Location<br>Hall</p>
+                </div>
+                <div>
+                    <p class="script-font" style="font-size: 1.5rem; color: var(--accent-blue);">Time</p>
+                    <p>11:30 AM<br>4:30 PM</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h3>Attire For The Guest</h3>
+            <img src="https://via.placeholder.com/150" alt="Attire Guide" style="margin: 15px 0;">
+            <p style="letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 15px; font-weight: bold;">SEMI-FORMAL | CASUAL | TRADITIONAL</p>
+            <p style="font-style: italic;">We would love to see our family and friends dressed in their finest!<br><br>Let's make the photos unforgettable!</p>
+        </section>
+
+        <section style="padding: 40px 20px; max-width: 500px; margin: auto;">
+            <h3 class="script-font" style="color: var(--accent-blue); font-size: 3rem; margin-bottom: 30px;">Itinerary</h3>
+            <div class="timeline-item">
+                <div class="time">11:30 AM</div>
+                <div style="border-left: 2px solid var(--accent-blue); padding-left: 15px; text-align: left;">
+                    <p style="color: var(--accent-blue); font-weight: bold;">Guest Arrival</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">12:30 PM</div>
+                <div style="border-left: 2px solid var(--accent-blue); padding-left: 15px; text-align: left;">
+                    <p style="color: var(--accent-blue); font-weight: bold;">Bride & Groom Arrival</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">1:00 PM</div>
+                <div style="border-left: 2px solid var(--accent-blue); padding-left: 15px; text-align: left;">
+                    <p style="color: var(--accent-blue); font-weight: bold;">Ceremonial Dining</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">2:00 PM</div>
+                <div style="border-left: 2px solid var(--accent-blue); padding-left: 15px; text-align: left;">
+                    <p style="color: var(--accent-blue); font-weight: bold;">Photo Session</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">4:30 PM</div>
+                <div style="border-left: 2px solid var(--accent-blue); padding-left: 15px; text-align: left;">
+                    <p style="color: var(--accent-blue); font-weight: bold;">Ceremony Ends</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: var(--parchment);">
+            <h3>Reception Venue</h3>
+            <img src="https://via.placeholder.com/200" alt="Gazebo" style="margin: 20px 0;">
+            <p style="font-size: 1.2rem; margin-bottom: 20px; font-weight: bold;">Location Hall, 06700<br>Pendang, Kedah, Malaysia</p>
+            <a href="#" class="action-btn">Google Maps ↗</a>
+            <a href="#" class="action-btn">Waze ↗</a>
+        </section>
+
+        <section class="section-card">
+            <h3>Contact Us</h3>
+            <a href="tel:+60123456789" class="action-btn" style="width: 100%;">📞 PERSON 1</a>
+            <a href="tel:+60123456789" class="action-btn" style="width: 100%;">📞 PERSON 2</a>
+            <a href="tel:+60123456789" class="action-btn" style="width: 100%;">📞 PERSON 3</a>
+            <a href="tel:+60123456789" class="action-btn" style="width: 100%;">📞 PERSON 4</a>
+            <p style="margin-top: 20px; font-size: 0.9rem;">If you have any questions along the way, please don't hesitate to reach out to us. We would love to hear from you!</p>
+        </section>
+
+        <section class="section-card" style="border: 2px solid var(--accent-blue);">
+            <h3>Countdown Days</h3>
+            <div id="timer" style="font-size: 2rem; letter-spacing: 2px; margin-bottom: 30px; font-weight: bold; color: var(--accent-blue);">50 : 05 : 04 : 01</div>
+            
+            <p style="letter-spacing: 1px; margin-bottom: 20px; font-size: 0.9rem;">KINDLY RESPOND BEFORE 1st JULY 2026</p>
+            <h3 style="font-size: 3.5rem; margin-bottom: 20px;">RSVP</h3>
+            
+            <form class="rsvp-form" onsubmit="submitRSVP(event)">
+                <label>Name</label>
+                <input type="text" placeholder="Your full name" required>
+
+                <label>Attendance</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="attendance" value="yes" required> Yes, I will attend</label>
+                    <label><input type="radio" name="attendance" value="no"> Sorry, I can't attend</label>
+                </div>
+
+                <label>Number of Guests</label>
+                <select id="guest-count">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <div id="plus-one-section" style="display: none; margin-top: 15px; flex-direction: column;">
+                    <label>Plus One's Name</label>
+                    <input type="text" id="plus-one-name" name="plus_one_name" placeholder="Their full name" style="margin-top: 5px;">
+                </div>
+
+                <label>Wishes & Blessings</label>
+                <textarea rows="4" placeholder="Your wishes and blessings..."></textarea>
+
+                <button type="submit" class="submit-btn">Submit RSVP</button>
+            </form>
+        </section>
+
+        <section class="section-card">
+            <h4 style="color: var(--accent-blue); margin-bottom: 10px; font-size: 1.2rem;">Total Guests Attending</h4>
+            <div style="font-size: 3.5rem; color: var(--text-dark); margin-bottom: 20px; font-weight: bold;">21</div>
+            
+            <h4 style="color: var(--accent-blue); margin-bottom: 15px; font-size: 1.2rem;">Wishes & Blessings</h4>
+            <div style="border-top: 1px solid var(--accent-blue); padding-top: 15px; margin-bottom: 15px;">
+                <p style="font-weight: bold; font-size: 0.9rem;">Ashley</p>
+                <p style="font-style: italic; font-size: 0.9rem;">"May your love story continue to be filled with joy, laughter, and endless adventures together."</p>
+            </div>
+            <div style="border-top: 1px solid var(--accent-blue); padding-top: 15px; margin-bottom: 15px;">
+                <p style="font-weight: bold; font-size: 0.9rem;">Sophia</p>
+                <p style="font-style: italic; font-size: 0.9rem;">"Congratulationn🥰"</p>
+            </div>
+        </section>
+
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
