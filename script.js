@@ -10,41 +10,38 @@ function openInvitation() {
     setTimeout(() => {
         cover.style.display = 'none';
         mainContent.style.display = 'block';
-        // Automatically play music when opened
-        document.getElementById('bg-music').play().catch(e => console.log("Audio play blocked by browser"));
+        audio.play().catch(() => {});
     }, 1000);
-}
-
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-// Supabase client (browser / public key)
-// Supabase client (optional)
-const supabaseUrl = '';
-const supabaseKey = '';
-
-let supabase = null;
-
-if (supabaseUrl && supabaseKey) {
-    supabase = createClient(supabaseUrl, supabaseKey);
-} else {
-    console.warn("Supabase is not initialized. RSVP saving is disabled.");
 }
 
 // Music Player Toggle
 const audio = document.getElementById('bg-music');
-let isPlaying = false;
+const volumeSlider = document.getElementById('volume-slider');
+const playBtn = document.querySelector('.play-btn');
+
+audio.volume = volumeSlider.value / 100;
+volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value / 100;
+});
+
+function updatePlayButton() {
+    playBtn.innerText = audio.paused ? '▶' : '⏸';
+}
+
+audio.addEventListener('play', updatePlayButton);
+audio.addEventListener('pause', updatePlayButton);
 
 function toggleMusic() {
-    const btn = document.querySelector('.play-btn');
-    if (isPlaying) {
-        audio.pause();
-        btn.innerText = '▶';
-    } else {
+    if (audio.paused) {
         audio.play();
-        btn.innerText = '⏸';
+    } else {
+        audio.pause();
     }
-    isPlaying = !isPlaying;
 }
+
+// Expose handlers early so inline HTML onclick/onsubmit work even if later code fails
+window.openInvitation = openInvitation;
+window.toggleMusic = toggleMusic;
 
 // Simple Countdown Timer Logic
 const targetDate = new Date('September 26, 2026 11:30:00').getTime();
@@ -76,40 +73,21 @@ async function submitRSVP(event) {
     const wishes = document.getElementById('wishes').value.trim() || null;
 
     try {
-        const { data, error } = await supabase
-            .from('rsvp')
-            .insert([
-                {
-                    name: name,
-                    attendance: attendance,
-                    guest_count: guestCount,
-                    plus_one_name: plusOneName,
-                    wishes: wishes
-                }
-            ]);
-
-        if (error) {
-            console.error('Supabase insert error:', error);
-            alert('Unable to save RSVP. Please try again later.');
-            return;
-        }
+        const { saveRSVP } = await import('./backend/rsvp.js');
+        await saveRSVP({ name, attendance, guestCount, plusOneName, wishes });
 
         alert('Thank you — your RSVP has been saved.');
         form.reset();
         plusOneSection.style.display = 'none';
     } catch (e) {
         console.error(e);
-        alert('Unexpected error. See console for details.');
+        alert('Unable to save RSVP. Please try again later.');
     } finally {
         submitBtn.disabled = false;
     }
 }
 
-// Expose function for inline `onsubmit` handler in the HTML
 window.submitRSVP = submitRSVP;
-// Expose other handlers used by inline HTML `onclick`
-window.openInvitation = openInvitation;
-window.toggleMusic = toggleMusic;
 
 // Dropdown Plus One Logic
 const guestSelect = document.getElementById('guest-count');

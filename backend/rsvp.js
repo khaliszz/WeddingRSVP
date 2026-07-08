@@ -1,6 +1,9 @@
 import { supabase } from "./supabase.js";
 
 export async function saveRSVP(data) {
+    if (!supabase) {
+        throw new Error('RSVP saving is disabled. Supabase is not configured.');
+    }
 
     const { error } = await supabase
         .from("rsvp")
