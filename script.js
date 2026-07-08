@@ -60,6 +60,20 @@ setInterval(() => {
 }, 1000);
 
 // Form submission prevention for template
+async function loadTotalGuests() {
+    const totalEl = document.getElementById('total-guests');
+    if (!totalEl) return;
+
+    try {
+        const { getTotalGuestsAttending } = await import('./backend/rsvp.js');
+        const total = await getTotalGuestsAttending();
+        totalEl.textContent = total ?? '—';
+    } catch (e) {
+        console.error(e);
+        totalEl.textContent = '—';
+    }
+}
+
 async function submitRSVP(event) {
     event.preventDefault();
     const form = event.target;
@@ -79,6 +93,7 @@ async function submitRSVP(event) {
         alert('Thank you — your RSVP has been saved.');
         form.reset();
         plusOneSection.style.display = 'none';
+        await loadTotalGuests();
     } catch (e) {
         console.error(e);
         alert('Unable to save RSVP. Please try again later.');
@@ -104,3 +119,5 @@ guestSelect.addEventListener('change', function() {
         plusOneInput.value = ''; 
     }
 });
+
+loadTotalGuests();
